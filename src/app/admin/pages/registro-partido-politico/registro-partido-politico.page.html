@@ -1,0 +1,112 @@
+<ion-header>
+    <ion-toolbar color="success">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="primary">
+         
+          <ion-button size="small" shape="round" color="danger"><!--(click)="notifications($event)"-->
+              <ion-icon name="more" slot="icon-only"></ion-icon>
+              <!-- <ion-badge color="dark" slot="end">2</ion-badge> -->
+          </ion-button>
+        </ion-buttons>
+      <ion-title>Partidos Politicos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card>
+        <ion-grid>
+            <ion-row text-center class="header">
+              <ion-col>
+                <div>
+                <b> #</b>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div>
+                <b>PARTIDO POLITICO</b>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div>
+               <b>NÚMERO PARTIDO POLITICO</b>
+                </div>
+              </ion-col>
+              <!-- <ion-col>
+                  <div>
+                   Acciones
+                  </div>
+                </ion-col> -->
+            </ion-row>
+            <ion-row text-center *ngFor="let data of data | paginate: { itemsPerPage: 3, currentPage: p };index as i">
+           <!-- <ion-row class="cuerpo">-->
+              <ion-col text-center style="margin-block: 2%;">
+                <div>
+                    {{i+1}}
+                </div>
+              </ion-col>
+              <ion-col style="margin-block: 2%;">
+                <div>
+                  {{data.nombrePartido}}
+                </div>
+              </ion-col>
+              <ion-col style="margin-block: 2%;">
+                <div>
+                  {{data.numeroPartido}}
+                </div>
+              </ion-col>
+              <!-- <ion-col style="margin-block: 0%;">
+                  <div>
+                      <ion-button fill="outline" color="primary"><ion-icon name="create"></ion-icon></ion-button>
+                      <ion-button fill="outline" color="danger" (click)="borrarTipoUsuario(data)"><ion-icon class="borrar" name="ios-trash"></ion-icon></ion-button>
+                  </div>
+                </ion-col> -->
+            </ion-row>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+         </ion-grid>
+      </ion-card>
+    <ion-card>
+        <ion-item color="medium">
+            <ion-label>
+              Registrar Partidos Politicos
+            </ion-label>
+          </ion-item>
+      <ion-card-content>
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+            <ion-row>
+          <ion-col size="6">
+           <ion-item> 
+          <ion-label position="stacked">Partido Politico</ion-label>
+          <ion-input name="nombrePartido" [(ngModel)]="newPartido.nombrePartido" required></ion-input>
+        </ion-item>
+          </ion-col>
+  
+          <ion-col size="3">
+            <ion-item> 
+           <ion-label position="stacked">Número Partido Politico</ion-label>
+           <ion-input name="numeroPartido" [(ngModel)]="newPartido.numeroPartido" required></ion-input>
+         </ion-item>
+           </ion-col>
+         
+          <ion-col size="3">
+            <ion-button color="success" type="submit" expand="block" mode="ios">
+             Guardar
+             &nbsp;
+             <ion-icon class="guardar" name="save"></ion-icon>
+            </ion-button>
+             </ion-col>
+        </ion-row>
+      </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  
+  <!-- <ion-footer translucent="true" no-border>
+      <ion-toolbar>
+        <ion-title>Desarrollado por CacicusTech S.A </ion-title>
+      </ion-toolbar>
+    </ion-footer> -->
+  
+    <!-- Nuevo Modal  -->
+  
+  

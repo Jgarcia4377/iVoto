@@ -1,0 +1,13 @@
+{
+  "name": "ivoto",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [{
+    "path":"/",
+    "proxyUrl": "https://ac25f0aa.ngrok.io/"
+}], 
+  
+  "type": "angular"
+ 
+}

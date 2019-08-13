@@ -1,0 +1,112 @@
+<ion-header>
+    <ion-toolbar color="success">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Registro Evento Votación</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content padding>
+  
+      <ion-card>
+          <ion-row text-center>
+             <ion-col size="1">
+                <b> # </b>
+             </ion-col>
+             <ion-col size="3">
+                <B> Descripción </B>
+             </ion-col>
+             <ion-col size="5">
+               <b> Fecha y Hora de Inicio </b>
+             </ion-col>
+             <ion-col size="2">
+               <b> Fecha y Hora Fin </b>
+              </ion-col>
+              <ion-col size="1">
+                <b> Estado </b>
+              </ion-col>
+           </ion-row>
+           <ion-row text-center *ngFor="let evento of eventos | paginate: { itemsPerPage: 3, currentPage: p };index as i">
+               <ion-col size="1">
+                     {{ i + 1 }}
+               </ion-col>
+               <ion-col size="3">
+                   {{evento.descripcion}}
+               </ion-col>
+               <ion-col text-center size="5">
+                   {{evento.FHinicio}}
+               </ion-col>
+                <ion-col size="2">
+                   {{evento.FHfin}}
+               </ion-col>
+               <ion-col size="1">
+                 
+                <ion-icon name="more" (click)="mostrarDetalleEvento(evento)"></ion-icon>
+                   <!--<ion-toggle disabled="{{disableestado}}" checked color="success"></ion-toggle>-->
+                     <!-- {{usuario.estado}} -->
+                 </ion-col>
+             </ion-row> 
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+     </ion-card>
+         
+            
+    <ion-card>
+        <ion-item color="medium">
+            <ion-label>
+              Registrar Evento
+            </ion-label>
+          </ion-item>
+      <ion-card-content>
+  
+         
+        <form   #form="ngForm"  (ngSubmit)="onSubmit()">
+        
+            <ion-row>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Descripcion</ion-label>
+                        <ion-input name="descripcion" [(ngModel)]="newEvento.descripcion" required></ion-input>
+                      </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Observaciones</ion-label>
+                        <ion-input  name="observaciones" [(ngModel)]="newEvento.observaciones" required></ion-input>
+                      </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Fecha y Hora de inicio del evento</ion-label>
+                        <ion-datetime type="ios" display-format="YYYY MM DD HH:mm:ss" name="fechahorainicio" [(ngModel)]="newEvento.fechahorainicio" required></ion-datetime>
+                      </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Fecha y Hora de cierre del evento</ion-label>
+                        <ion-datetime type="ios" display-format="YYYY MM DD HH:mm:ss"  name="fechahorafin" [(ngModel)]="newEvento.fechahorafin" required></ion-datetime>
+                      </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="4"></ion-col>
+                <ion-col size="4">
+                    <ion-button  expand="block" shape="round" type="submit">
+                      Registrar
+                      <ion-icon name="arrow-dropright-circle"> </ion-icon>
+                    </ion-button>
+                </ion-col>
+                <ion-col size="4"></ion-col>
+              </ion-row>
+        
+      </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  
+  <!-- <ion-footer translucent="true" no-border>
+      <ion-toolbar>
+        <ion-title>Desarrollado por CacicusTech S.A </ion-title>
+      </ion-toolbar>
+    </ion-footer> -->

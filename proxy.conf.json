@@ -1,0 +1,10 @@
+{
+    "/": {
+        "target": "https://ac25f0aa.ngrok.io/",
+        "secure": false,
+        "pathRewrite": {
+          "^/": ""
+        },
+        "changeOrigin": true
+      }
+}

@@ -1,0 +1,138 @@
+<ion-header>
+    <ion-toolbar color="success">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    
+      <ion-title text-color="black"><b>Registro Candidatos</b></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content padding>
+  
+      <ion-card>
+             <ion-row text-center>
+                <ion-col size="1">
+                   <b> #</b>
+                </ion-col>
+                <ion-col size="3">
+                   <b>Evento</b>
+                </ion-col>
+                <ion-col size="3">
+                   <b>Nombres del Candidato</b>
+                </ion-col>
+                <ion-col size="2">
+                  <b> Partido Politico</b>
+                 </ion-col>
+                 <ion-col size="3">
+                    <b>Puesto Candidato</b>
+                 </ion-col>
+              </ion-row>
+              <ion-row text-center *ngFor="let candidato of candidatos | paginate: { itemsPerPage: 3, currentPage: p };index as i">
+                  <ion-col size="1">
+                     <b>   {{ i + 1 }}</b>
+                  </ion-col>
+                  <ion-col size="3">
+                      {{candidato.nombreEvento}}
+                  </ion-col>
+                  <ion-col text-center size="3">
+                      {{candidato.nombres}}
+                  </ion-col>
+                   <ion-col size="2">
+                      {{candidato.partidoPolitico}}
+                  </ion-col>
+                  <ion-col size="3">
+                    {{candidato.puestoCandidato}}
+                    </ion-col>
+                </ion-row> 
+             <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </ion-card>
+            
+    <ion-card>
+        <ion-item color="medium">
+            <ion-label>
+              Registrar Candidatos
+            </ion-label>
+          </ion-item>
+      <ion-card-content>
+         
+        <form   #form="ngForm"  (ngSubmit)="onSubmit()">
+        
+            <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label>Votaciones</ion-label>
+                    <ion-select [(ngModel)]="newCandidato.idevento" name="idevento"  multiple="false" placeholder="Seleccione un evento" required>
+                  <!--<ion-select placeholder="Seleccione">-->
+                      <ion-select-option class="option" *ngFor="let evento of eventos" value="{{evento.idEvento}}">
+                          {{
+                            evento.descripcion +" "+
+                            "con fecha y hora de inicio" + "  " +
+                            evento.FHinicio +" "+
+                            " fecha y hora de cierre" + evento.FHfin
+                            }}
+                      </ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label>Candidato</ion-label>
+                    <ion-select required [(ngModel)]="newCandidato.idpersona" name="idpersona"  multiple="false" placeholder="Seleccione un Candidato">
+                  <!--<ion-select placeholder="Seleccione">-->
+                      <ion-select-option class="option" *ngFor="let persona of personas" value="{{persona.idpersona}}">
+                          {{persona.nombres}}
+                      </ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label>Puesto Candidato</ion-label>
+                    <ion-select required [(ngModel)]="newCandidato.idPuestosCandidatos" name="idPuestosCandidatos"  multiple="false" placeholder="Seleccione un Puesto">
+                  <!--<ion-select placeholder="Seleccione">-->
+                      <ion-select-option class="option" *ngFor="let puesto of puestosCandidatos" value="{{puesto.idPuestosCandidatos}}">
+                          {{puesto.tipo}}
+                      </ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label>Partido Politico</ion-label>
+                    <ion-select required [(ngModel)]="newCandidato.idPartidosPoliticos" name="idPartidosPoliticos"  multiple="false" placeholder="Seleccione un Partido Politico">
+                  <!--<ion-select placeholder="Seleccione">-->
+                      <ion-select-option class="option" *ngFor="let partido of partidoPolitico" value="{{partido.idPartidosPoliticos}}">
+                          {{partido.nombrePartido}}
+                      </ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+             
+              <ion-row>
+                <ion-col size="4"></ion-col>
+                <ion-col size="4">
+                    <ion-button expand="block" shape="round" type="submit"><!--(click)="login()"-->
+                      Registrar
+                      <ion-icon name="arrow-dropright-circle"> </ion-icon>
+                    </ion-button>
+                </ion-col>
+                <ion-col size="4"></ion-col>
+              </ion-row>
+        
+      </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  
+  <!-- <ion-footer translucent="true" no-border>
+      <ion-toolbar>
+        <ion-title>Desarrollado por CacicusTech S.A </ion-title>
+      </ion-toolbar>
+    </ion-footer> -->

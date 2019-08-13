@@ -1,0 +1,84 @@
+
+<ion-header >
+  <ion-toolbar text-center color="success">
+    <ion-title> Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<br>
+<br>
+<br>
+
+<ion-content>
+
+  
+    <ion-card md="ios">
+        <ion-card-header>
+            <ion-card-subtitle text-center><b>Inicia Sesión</b></ion-card-subtitle>
+          </ion-card-header>
+  
+        <ion-card-content md="ios">
+          <form  #form="ngForm" (ngSubmit)="onSubmit()">
+           
+              <ion-icon text-center  class="logoAdmin" name="contact"></ion-icon>
+              <ion-title text-center>Votante</ion-title>
+      
+          <ion-item md="ios">
+            <ion-label position="floating">Usuario</ion-label>
+            <ion-input name="usuario" [(ngModel)]="user.usuario" required></ion-input>
+          </ion-item>
+          <ion-item md="ios">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" name="contrasena" [(ngModel)]="user.contrasena" required></ion-input>
+          </ion-item>
+          <br>
+          <ion-button shape="round" type="submit"  ><!--(click)="login()"-->
+            Incia Sesión
+            <ion-icon name="arrow-dropright-circle"> </ion-icon>
+          </ion-button>
+        </form>
+        </ion-card-content>
+      </ion-card>
+</ion-content>
+
+<!--   
+<ion-card md="ios" class="centrar">
+  
+  <ion-card-content>
+    <form  #form="ngForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label class="negrita" position="floating">Usuario</ion-label>
+      <ion-input name="usuario" [(ngModel)]="user.usuario" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="negrita" position="floating">Contraseña</ion-label>
+      <ion-input type="password" name="contrasena" [(ngModel)]="user.contrasena" required></ion-input>
+    </ion-item>
+    <br>
+    
+    <ion-button shape="round" type="submit"  >
+       Incia Sesión
+      <ion-icon name="arrow-dropright-circle"> </ion-icon>
+    </ion-button>
+  </form>
+  </ion-card-content>
+  
+</ion-card>
+ -->
+
+<!-- 
+<ion-toolbar color="dark">
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-icon slot="icon-only" name="contact"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons slot="primary">
+    <ion-button color="danger">
+      <ion-icon slot="icon-only" name="more"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Dark Toolbar</ion-title>
+</ion-toolbar> -->

@@ -1,0 +1,143 @@
+<ion-header>
+    <ion-toolbar color="success">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="primary">
+         
+          <ion-button size="small" shape="round" color="danger"><!--(click)="notifications($event)"-->
+              <ion-icon name="more" slot="icon-only"></ion-icon>
+              <!-- <ion-badge color="dark" slot="end">2</ion-badge> -->
+          </ion-button>
+        </ion-buttons>
+      <ion-title>Registro Votantes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content padding>
+  
+      <ion-card>
+             <ion-row text-center>
+                <ion-col size="1">
+                    #
+                </ion-col>
+                <ion-col size="3">
+                    Cedula
+                </ion-col>
+                <ion-col size="5">
+                   Nombres y apellidos
+                </ion-col>
+                <ion-col size="2">
+                   Email
+                 </ion-col>
+                 <ion-col size="1">
+                    Estado
+                 </ion-col>
+              </ion-row>
+              <ion-row text-center *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 3, currentPage: p };index as i">
+                  <ion-col size="1">
+                        {{ i + 1 }}
+                  </ion-col>
+                  <ion-col size="3">
+                      {{usuario.cedula}}
+                  </ion-col>
+                  <ion-col text-center size="5">
+                      {{usuario.nombres}}
+                  </ion-col>
+                   <ion-col size="2">
+                      {{usuario.correo}}
+                  </ion-col>
+                  <ion-col size="1">
+                      <ion-toggle disabled="{{disableestado}}" checked color="success"></ion-toggle>
+                        <!-- {{usuario.estado}} -->
+                    </ion-col>
+                </ion-row> 
+             <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </ion-card>
+            
+    <ion-card>
+        <ion-item color="medium">
+            <ion-label>
+              Registrar Votantes
+            </ion-label>
+          </ion-item>
+      <ion-card-content>
+         
+        <form   #form="ngForm"  (ngSubmit)="onSubmit()">
+        
+            <ion-row>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Cedula</ion-label>
+                        <ion-input name="cedula" disabled="{{isDisabledCedula}}" [(ngModel)]="userNuevo.cedula" (keyup.enter)="validar()" required></ion-input>
+                      </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Nombres</ion-label>
+                        <ion-input disabled="{{isDisabled}}" name="nombres" [(ngModel)]="userNuevo.nombres" required></ion-input>
+                      </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Apellido Paterno</ion-label>
+                        <ion-input disabled="{{isDisabled}}" name="apellido_p" [(ngModel)]="userNuevo.apellido_p" required></ion-input>
+                      </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Apellido Materno</ion-label>
+                        <ion-input disabled="{{isDisabled}}" name="apellido_m" [(ngModel)]="userNuevo.apellido_m" required></ion-input>
+                      </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Huella Dactilar</ion-label>
+                        <ion-input disabled="{{isDisabled}}" name="huella_dactilar" [(ngModel)]="userNuevo.huella_dactilar" required></ion-input>
+                      </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Correo Electronico</ion-label>
+                        <ion-input disabled="{{isDisabled}}" type="email" name="correo" [(ngModel)]="userNuevo.correo" required></ion-input>
+                   </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Telefono</ion-label>
+                        <ion-input disabled="{{isDisabled}}" name="telefono" [(ngModel)]="userNuevo.telefono" required></ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-item>
+                        <ion-label position="floating">Direcciòn</ion-label>
+                        <ion-input disabled="{{isDisabled}}" name="direccion" [(ngModel)]="userNuevo.direccion" required></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="4"></ion-col>
+                <ion-col size="4">
+                    <ion-button disabled="{{isDisabled}}" expand="block" shape="round" type="submit"><!--(click)="login()"-->
+                      Registrar
+                      <ion-icon name="arrow-dropright-circle"> </ion-icon>
+                    </ion-button>
+                </ion-col>
+                <ion-col size="4"></ion-col>
+              </ion-row>
+        
+      </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  
+  <!-- <ion-footer translucent="true" no-border>
+      <ion-toolbar>
+        <ion-title>Desarrollado por CacicusTech S.A </ion-title>
+      </ion-toolbar>
+    </ion-footer> -->

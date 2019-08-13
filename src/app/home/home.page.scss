@@ -1,0 +1,21 @@
+
+ion-icon {
+    font-size: 128px;
+  }
+
+  .active{
+    border-left: 8px solid var(--ion-color-success)
+}
+
+.parent-active {
+    font-weight: 500;
+}
+ 
+.sub-item {
+    padding-left: 20px;
+    font-size: small;
+}
+
+ion-label{
+    font-weight: lighter; 
+}
