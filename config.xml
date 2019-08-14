@@ -3,10 +3,11 @@
     <name>ivoto</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">CacicusTech</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="https://localhost:8100" />
     <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
+    <allow-intent href="*" />
+    <allow-intent href="https://ivoto-d9599.firebaseapp.com/" />
+    <allow-navigation href="https://ivoto-d9599.firebaseapp.com/" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
@@ -99,4 +100,7 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <allow-navigation href="https://*" sessionid="6c615314" />
+    <allow-navigation href="https://ivoto-d9599.firebaseapp.com" sessionid="8d5c2e43" />
+    <allow-navigation href="https://localhost:8100" sessionid="84017e23" />
 </widget>

@@ -47,7 +47,7 @@ export class LoginPage implements OnInit,DoCheck {
           localStorage.setItem('identity',JSON.stringify(this.identity));
           if(this.user.usuario == this.identity[0][0].usuario){   
             this.toastController.presentToast(this.identity[0][0].notificacion);
-           // this.router.navigate(['home']);  
+            this.router.navigate(['home']);  
             this.androidFingerprintAuth.isAvailable().then((result)=> {
               if(result.isAvailable){
                 // it is available

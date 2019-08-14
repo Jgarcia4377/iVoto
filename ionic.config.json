@@ -3,11 +3,12 @@
   "integrations": {
     "cordova": {}
   },
-  "proxies": [{
-    "path":"/",
-    "proxyUrl": "https://ac25f0aa.ngrok.io/"
-}], 
-  
-  "type": "angular"
- 
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/",
+      "proxyUrl": "https://ac25f0aa.ngrok.io/"
+    }
+  ],
+  "id": "3c84eda4"
 }
