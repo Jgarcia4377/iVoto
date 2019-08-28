@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>RESULTADOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>RESULTADOS</ion-card-subtitle>
+     
+    </ion-card-header>
+  
+    <ion-card-content>
+        <form   #form="ngForm"  (ngSubmit)="onSubmit()">
+      <ion-row>
+        <ion-col size="9">
+          <ion-item>
+            <ion-label>Evento</ion-label>
+            <ion-select [(ngModel)]="resultado.idEvento" name="idEvento"  multiple="false" placeholder="Seleccione un evento" required>
+              <!--<ion-select placeholder="Seleccione">-->
+                  <ion-select-option class="option" *ngFor="let evento of eventos" value="{{evento.idEvento}}">
+                      {{
+                        evento.descripcion
+                        }}
+                  </ion-select-option>
+                </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button color="success" type="submit">
+            BUSCAR
+            <ion-icon slot="end" name="search"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      </form>
+      <ion-card class="hola">
+          <ion-card-header>
+           DASHBOARD
+          </ion-card-header>
+          <ion-card-content>
+            <canvas id="myChart" width="200" height="200"></canvas>
+          </ion-card-content>
+        </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+    
+  </ion-content>
+
+<ion-footer translucent="true" no-border>
+    <ion-toolbar>
+      <ion-title>Desarrollado por CacicusTech S.A </ion-title>
+    </ion-toolbar>
+  </ion-footer>

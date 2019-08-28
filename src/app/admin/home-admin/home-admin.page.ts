@@ -1,5 +1,5 @@
 import { Component, OnInit, DoCheck, } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterEvent } from '@angular/router';
 import { UsuarioServices } from '../../services/usuario.services';
 
 
@@ -12,18 +12,23 @@ import { UsuarioServices } from '../../services/usuario.services';
 })
 export class HomeAdminPage implements OnInit, DoCheck {
 
-  // selectedPath = '';
+  
   pages = [
    
     {
       title: 'Dashboard',
-      url: 'dashboard',
+      url: 'dashboardAdmin',
       icon: 'home'
     },
     {
       title: 'Registrar Votantes',
       url: 'registro-votante',
       icon: 'person-add'
+    },
+    {
+      title: 'Resultados',
+      url: 'resultados',
+      icon: 'pie'
     },
     {
       title: 'Configuraciones',
@@ -56,15 +61,14 @@ export class HomeAdminPage implements OnInit, DoCheck {
       ]
     },
   ]
+ 
 
   identity: any;
   public userStr;
   nombres: any;
 
   constructor(private _UsuarioServices:UsuarioServices, private router: Router) {
-    // this.router.events.subscribe((event: RouterEvent) => {
-    //     this.selectedPath = event.url;
-    // });
+    
   }  
 
 

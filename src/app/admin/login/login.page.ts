@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
         localStorage.setItem('identity',JSON.stringify(this.identity));
         if(this.admin.usuario == this.identity[0][0].usuario){   
           this.toastController.presentToast(this.identity[0][0].notificacion);
-            this.router.navigate(['home-admin/dashboard']);            
+            this.router.navigate(['home-admin/dashboardAdmin']);            
             
         }
         

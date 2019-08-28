@@ -25,7 +25,10 @@ const routes: Routes = [
         path: 'votacion', 
         loadChildren: '../pages/votacion/votacion.module#VotacionPageModule'
        },
-
+       { 
+         path: 'resultados', 
+         loadChildren: '../pages/resultados/resultados.module#ResultadosPageModule' 
+        },
         { 
          path: 'about', 
          loadChildren: '../pages/about/about.module#AboutPageModule' 

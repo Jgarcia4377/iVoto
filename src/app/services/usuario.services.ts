@@ -25,7 +25,7 @@ export class UsuarioServices {
     
 
     constructor(public _http: HttpClient){
-        this.url = GLOBAL.url;
+        this.url ='http://localhost:3000/';
        
     }
 //    login(user:User, token=null): Observable <any>{
@@ -46,15 +46,12 @@ export class UsuarioServices {
    //}
 
    
+ 
 
    loginUser(usuario){
-           
-    
-        // let params= JSON.stringify(usuario);
-        // console.log("parametros"+params)
-        
+                
         let headers = new HttpHeaders().set('Content-Type','application/json');
-        return this._http.post(this.url+'login', JSON.stringify(usuario), {headers: headers})
+        return this._http.post('http://localhost:3000/'+'login', JSON.stringify(usuario), {headers: headers})
     };
 
     getPersonas(): Observable <any>{

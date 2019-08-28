@@ -12,7 +12,8 @@ import { UsuarioServices } from './services/usuario.services';
 import {HttpClientModule} from '@angular/common/http';
 import { ToastExample } from './providers/utility/toast'
 import { ValidarCedula } from './providers/utility/validarCedula'
-
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,9 @@ import { ValidarCedula } from './providers/utility/validarCedula'
     ValidarCedula,
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    FileOpener,
+    File
   ],
   bootstrap: [AppComponent]
 })

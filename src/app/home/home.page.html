@@ -56,6 +56,13 @@
 -->
   </div>
   
+  <ion-item (click)="logout()" style="cursor:pointer;">
+      <ion-icon ios="ios-exit" md="md-exit" slot="start"></ion-icon>
+      <ion-label>
+        Salir
+      </ion-label>
+       
+      </ion-item>
 </ion-content>
 </ion-menu>
 <ion-router-outlet id="content" main></ion-router-outlet>

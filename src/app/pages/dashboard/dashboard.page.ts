@@ -21,6 +21,8 @@ export class DashboardPage implements OnInit {
   identity: any;
   eventos: any;
   fechainicio:[];
+  evento:any;
+  duration: any;
 
   constructor(private router: Router,private toastController: ToastExample,public popoverController: PopoverController, private _UsuarioServices:UsuarioServices, private _eventos: eventoVotacionServices) { }
   
@@ -29,21 +31,11 @@ export class DashboardPage implements OnInit {
     FHActualSistema :'',
   }
 
-  // async notifications(ev: any){
-  //   const popover = await this.popoverController.create({
-  //     cssClass:"popover_class",
-  //     component: NotificationsComponent,
-  //     event: ev,
-  //     translucent: true,
-  //     mode:"ios",
-  //   });
-  //   return await popover.present();
-  // }
   getEventos(){
     
     this._eventos.getEventos().subscribe(
       response =>{ 
-       console.log(response)
+       //console.log(response)
        this.eventos = response
      },
      error=>{
@@ -59,8 +51,10 @@ export class DashboardPage implements OnInit {
   ngOnInit() {
 
     this.getEventos();
+   // this.evento = this._eventos.getIdentity();
   
   }
+  
 
 
   seleccionarEvento(data){
@@ -70,17 +64,22 @@ export class DashboardPage implements OnInit {
     this.actualizar.idevento = data.idEvento;
     let FechaHoraActual: any = new Date();
     this.actualizar.FHActualSistema = moment(FechaHoraActual).format('YYYY-MM-DD HH:mm:ss') ;
-    //console.log(this.actualizar)
-    console.log(this.eventos)
+    
+    console.log(this.actualizar)
+   // console.log(this.eventos)
     this._eventos.UpdateEstadoEvento(this.actualizar).subscribe(
       response =>{ 
-       console.log(response)
+        localStorage.setItem('evento',JSON.stringify(this.actualizar.idevento));
+        console.log(response)
        //this.toastController.presentToast(response[0][0].notificacion);
        if(response[0][0].idestadoVotacion == 2){
          console.log("paso");
         this.router.navigate(['/home/votacion']);  
        } else if(response[0][0].idestadoVotacion == 3){
         this.toastController.presentToast("EL evento ya finalizo");
+        this.duration= 1000,
+        this.toastController.presentToastWithOptions(response);
+        //this.toastController.crearPDF()
        }
      },
      error=>{

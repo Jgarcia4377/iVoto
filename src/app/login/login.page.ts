@@ -42,16 +42,21 @@ export class LoginPage implements OnInit,DoCheck {
         response=>{
           this.identity = response;
           console.log(response);
-
+          this.toastController.presentToast(response)
           //PERSISTIR DATOS DEL USUARIO
           localStorage.setItem('identity',JSON.stringify(this.identity));
           if(this.user.usuario == this.identity[0][0].usuario){   
+          
             this.toastController.presentToast(this.identity[0][0].notificacion);
+            //this.router.navigate(['home']); 
+            console.log('llegas a pasar el login');
             this.router.navigate(['home']);  
+            
             this.androidFingerprintAuth.isAvailable().then((result)=> {
               if(result.isAvailable){
                 // it is available
-          
+                  console.log('pider fingerprint');
+                  
                 this.androidFingerprintAuth.encrypt({ clientId: 'myAppName', username: this.identity[0][0].usuario , password: 'myPassword' })
                   .then(result => {
                      if (result.withFingerprint) {
@@ -67,13 +72,16 @@ export class LoginPage implements OnInit,DoCheck {
                      if (error === this.androidFingerprintAuth.ERRORS.FINGERPRINT_CANCELLED) {
                        console.log('Autenticación de huellas dactilares cancelada');
                      } else console.error(error)
+                     this.toastController.presentToast(error)
                   });
           
               } else {
                 // fingerprint auth isn't available
               }
             })
-            .catch(error => console.error(error));
+           
+            .catch(error =>  this.toastController.presentToast(error));
+           
               
              
           }

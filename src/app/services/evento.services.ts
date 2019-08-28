@@ -12,17 +12,26 @@ export class eventoVotacionServices {
    // public usuario:Usuario;
     public url:string;
     
-    
+    public identity;
 
     constructor(public _http: HttpClient){
         this.url = GLOBAL.url;
     }
 
     RegistroEvento(eventoVotacion): Observable <any>{
+       
         let params= JSON.stringify(eventoVotacion);
         let headers = new HttpHeaders().set('Content-Type','application/json');
                                       // .set('Authorization', this.getToken());
-        return this._http.post(this.url+'registro-evento',JSON.stringify(eventoVotacion), {headers:headers});      
+        return this._http.post(this.url+'registro-evento',JSON.stringify(eventoVotacion), {headers});      
+    }
+
+    MostrarGraficoById(resultado): Observable <any>{
+        console.log(resultado)
+        let params= JSON.stringify(resultado);
+        let headers = new HttpHeaders().set('Content-Type','application/json');
+                                      // .set('Authorization', this.getToken());
+        return this._http.post(this.url+'resultados',JSON.stringify(resultado), {headers});      
     }
 
     getEventos(): Observable <any>{
@@ -82,6 +91,17 @@ export class eventoVotacionServices {
                                       // .set('Authorization', this.getToken());
         return this._http.put(this.url+'registro-evento',JSON.stringify(evento), {headers:headers});      
     }
+
+    getIdentity(){
+        let identity = JSON.parse(JSON.stringify(localStorage.getItem('evento')));
+        if(identity != "undefined"){
+            this.identity = identity;
+        }else{
+            this.identity = null;
+        }
+        return this.identity;
+    }
+
 
   
 

@@ -18,11 +18,16 @@ export class HomePage {
       url: 'dashboard',
       icon: 'home'
     },
-    {
-      title: 'Mi Votación',
-      url: 'votacion',
-      icon: 'checkbox-outline'
+    // {
+    //   title: 'Mi Votación',
+    //   url: 'votacion',
+    //   icon: 'checkbox-outline'
      
+    // },
+    {
+      title: 'Resultados',
+      url: 'resultados',
+      icon: 'pie'
     },
     {
       title: 'Acerca de',
@@ -68,6 +73,14 @@ export class HomePage {
     this.identity = (localStorage.getItem("identity"))?JSON.parse(localStorage.getItem("identity")):[];
     console.log(this.identity[0][0].nombres);
     this.nombres = this.identity[0][0].nombres;
+  }
+
+  logout(){
+    localStorage.clear();
+    this.identity = null;
+   // this._router.navigate(['/inicio']);
+    this.router.navigate(['/']);  
+    console.log('sesión cerrada');
   }
 
 }

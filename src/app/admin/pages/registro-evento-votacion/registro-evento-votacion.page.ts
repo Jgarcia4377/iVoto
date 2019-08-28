@@ -41,6 +41,12 @@ export class RegistroEventoVotacionPage implements OnInit {
     console.log(this.newEvento.fechahorainicio)
     this.newEvento.fechahorafin = moment(this.newEvento.fechahorafin).format('YYYY-MM-DD HH:mm:ss');
     console.log(this.newEvento.fechahorafin)
+    if(this.newEvento.fechahorafin <= this.newEvento.fechahorainicio){
+      this.toastController.presentToast("La finalizacion del evento no puede ser menor a la fecha de inicio del mismo")
+    }
+    else{
+
+    
   this._eventoVotacion.RegistroEvento(this.newEvento).subscribe(
     response=>{
       this.eventos = response;
@@ -52,13 +58,19 @@ export class RegistroEventoVotacionPage implements OnInit {
      // window.location.reload()
     // this.getTipoUsuario();
        this.toastController.presentToast(response[0][0].notificacion)
-       
+       this.getEventos();
+       this.newEvento.descripcion=""
+       this.newEvento.fechahorafin=""
+       this.newEvento.fechahorainicio=""
+       this.newEvento.observaciones=""
+
   //     this.presentLoading();
       //window.location.reload();
       //PERSISTIR DATOS DEL USUARIO
       //localStorage.setItem('identity',JSON.stringify(this.identity));
       
      } );
+    }
     }
 
     getEventos(){

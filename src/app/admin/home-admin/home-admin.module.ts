@@ -17,12 +17,13 @@ const routes: Routes = [
     path: '',
     component: HomeAdminPage,
     children: [
-      { path: 'dashboard', loadChildren: '../pages/dashboard-admin/dashboard-admin.module#DashboardAdminPageModule'},
+      { path: 'dashboardAdmin', loadChildren: '../pages/dashboard-admin/dashboard-admin.module#DashboardAdminPageModule'},
       { path: 'registro-votante', loadChildren: '../pages/registro-votante/registro-votante.module#RegistroVotantePageModule' },
       { path: 'registro-evento', loadChildren: '../pages/registro-evento-votacion/registro-evento-votacion.module#RegistroEventoVotacionPageModule' },
       { path: 'registro-candidato', loadChildren: '../pages/registro-candidato/registro-candidato.module#RegistroCandidatoPageModule' },
       { path: 'registro-partido-politico', loadChildren: '../pages/registro-partido-politico/registro-partido-politico.module#RegistroPartidoPoliticoPageModule' },
       { path: 'registro-puestos', loadChildren: '../pages/registro-puestos/registro-puestos.module#RegistroPuestosPageModule' },
+      { path: 'resultados', loadChildren: '../pages/resultados/resultados-admin.module#ResultadosPageModule' }
  
 
        

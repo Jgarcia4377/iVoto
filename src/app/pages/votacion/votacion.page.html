@@ -11,14 +11,22 @@
  
 <ion-content padding>
     <ion-card mode="ios">
-        <ion-card-header *ngIf="candidatos">
-          <ion-card-title text-center><b>{{candidatos[0].nombreEvento}}</b></ion-card-title>
-          <ion-card-subtitle><b>{{candidatos[0].puestoCandidato}}</b></ion-card-subtitle>
-        </ion-card-header>
+      <div *ngFor="let candidato of candidatos; index as i" >
+          <div *ngIf="candidato.idEvento == identity">
+
+<!--      
+        <ion-card-header>
+          <ion-card-title text-center><b>{{candidato.nombreEvento}}</b></ion-card-title>
+          <ion-card-subtitle><b>{{candidato.puestoCandidato}}</b></ion-card-subtitle>
+        </ion-card-header> -->
       
         <ion-card-content >
             <ion-card-header>
-                <ion-grid align-items-center *ngFor="let candidato of candidatos; index as i">
+                <ion-grid align-items-center>
+                  <ion-title text-center><b>{{candidato.nombreEvento}}</b></ion-title>
+                  <ion-title text-center><b>{{candidato.puestoCandidato}}</b></ion-title>
+                  
+                  
                    <!-- <ion-row>
                         <ion-col >
                             <ion-item>
@@ -49,14 +57,12 @@
                       </ion-button>
                        
                    
-                    <!-- <ion-row>
-                        <ion-col >
-                            <ion-label><b>Partido Politico: &nbsp;</b>{{candidato.partidoPolitico}}</ion-label>
-                        </ion-col>
-                    </ion-row>                        -->
+               
                     </ion-grid>
               </ion-card-header>
         </ion-card-content>
+      </div>
+      </div>
       </ion-card>
 </ion-content>
 
